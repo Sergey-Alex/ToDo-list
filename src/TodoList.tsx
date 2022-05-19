@@ -31,6 +31,10 @@ const TodoList = (props: PropsType) => {
         }
     }
 
+    const filterValueHandler = (felterValue: FilterValueTypes) => {
+        props.changeFilterValue(felterValue)
+    }
+
     return (
         <div>
             <h3>{props.title}</h3>
@@ -49,9 +53,9 @@ const TodoList = (props: PropsType) => {
                 )}
             </ul>
             <div>
-                <button onClick={() => props.changeFilterValue('all')}>All</button>
-                <button onClick={() => props.changeFilterValue('active')}>Active</button>
-                <button onClick={() => props.changeFilterValue('completed')}>Completed</button>
+                <button onClick={()=>filterValueHandler('all')}>All</button>
+                <button onClick={()=>filterValueHandler('active')}>Active</button>
+                <button onClick={()=>filterValueHandler('completed')}>Completed</button>
             </div>
         </div>
     );
