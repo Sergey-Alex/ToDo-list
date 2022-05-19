@@ -62,7 +62,7 @@ const TodoList = (props: PropsType) => {
                 {error && <div className={classes.errorMessage}>{error}</div>}
             </div>
             <ul>
-                {props.tasks.map(t => <li key={t.id}>
+                {props.tasks.map(t => <li key={t.id}  className={t.isDone ? classes.isDone : ''}>
                         <input type="checkbox"
                                checked={t.isDone}
                                onChange={(e) => onChangeHandler(t.id, e.currentTarget.checked)}/>
