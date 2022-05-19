@@ -46,6 +46,7 @@
                     changeFilterValue={changeFilterValue}
                     addTasks={addTasks}
                     changeStatus={changeStatus}
+                    filter={filter}
                 />
             </div>
         );
