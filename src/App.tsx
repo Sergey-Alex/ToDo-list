@@ -29,7 +29,7 @@ function App() {
     }
 
     const addTasks = (value: string) => {
-        setTasks([{id: v1(), title: value, isDone: false} ,...tasks])
+        setTasks([{id: v1(), title: value, isDone: false}, ...tasks])
     }
 
     return (
@@ -38,8 +38,8 @@ function App() {
                 tasks={taskForTodoList}
                 title='What to learn'
                 removeTasks={removeTasks}
-                changeFilterValue = {changeFilterValue}
-                addTasks = {addTasks}
+                changeFilterValue={changeFilterValue}
+                addTasks={addTasks}
             />
         </div>
     );
