@@ -1490,6 +1490,11 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
+"@react-buddy/ide-toolbox@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@react-buddy/ide-toolbox/-/ide-toolbox-2.1.2.tgz#bbbc67f855ff407a7e11c2304504b97e23062a21"
+  integrity sha512-EAEUpUKuQCsLKiH/B6YeARXuc3/d6FASQF0nRhxjms9ParEe6r72NkavLyIoDFMSw/d20LmdD/p0TahA4YkpNg==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
