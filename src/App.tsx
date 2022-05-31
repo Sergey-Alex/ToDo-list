@@ -112,7 +112,7 @@ function App() {
 
     return (
         <div className="App">
-            <AddItemForm addItem={addTodoList} />
+            <AddItemForm addItem={addTodoList}/>
             {todolists.length ? todoListImage : <span> Create first note </span>}
         </div>
     );

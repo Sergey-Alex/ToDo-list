@@ -3,12 +3,12 @@ import React, {ChangeEvent, useState} from 'react';
 type EditableSpanPropsType = {
     title: string
     classes?: string
-    updateTitle : (title:string) => void
+    updateTitle: (title: string) => void
 
 }
 
 const EditableSpan = (props: EditableSpanPropsType) => {
-    const [itemTitle, setTitle] = useState <string>(props.title)
+    const [itemTitle, setTitle] = useState<string>(props.title)
     const [editMode, setEditMode] = useState<boolean>(false)
     const onEditMode = () => setEditMode(true)
     const offEditMode = () => {

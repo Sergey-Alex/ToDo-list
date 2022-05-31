@@ -20,8 +20,8 @@ type PropsType = {
     changeTaskStatus: (todoListId: string, taskId: string, isDone: boolean) => void
     filter: FilterValuesType
     removeTodoList: (todolistId: string) => void
-    changeTodoListTitle: (title: string, todoListId: string) =>void
-    changeTaskTitle :(todoListId: string, title: string, tId: string)=>void
+    changeTodoListTitle: (title: string, todoListId: string) => void
+    changeTaskTitle: (todoListId: string, title: string, tId: string) => void
 }
 
 export function Todolist(props: PropsType) {
@@ -42,30 +42,31 @@ export function Todolist(props: PropsType) {
             <button onClick={() => props.removeTodoList(props.todolistId)}>❌</button>
         </h3>
         <AddItemForm addItem={addTask}/>
-        <ul>
-            {
-                props.tasks.map(t => {
-                    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-                        props.changeTaskStatus(props.todolistId, t.id, e.currentTarget.checked);
-                    }
-                    const onRemoveHandler = () => props.removeTask(props.todolistId, t.id)
+        {
+            props.tasks.length === 0 ? <><span>please enter data</span></> : <ul>
+                    {
+                        props.tasks.map(t => {
+                            const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+                                props.changeTaskStatus(props.todolistId, t.id, e.currentTarget.checked);
+                            }
+                            const onRemoveHandler = () => props.removeTask(props.todolistId, t.id)
 
-                    const changeTaskTitle = (title:string) => {
-                        props.changeTaskTitle(t.id,title, props.todolistId)
-                    }
+                            const changeTaskTitle = (title: string) => {
+                                props.changeTaskTitle(t.id, title, props.todolistId)
+                            }
 
-                    return <li key={t.id} className={t.isDone ? classes.isDone : ""}>
-                        <input type="checkbox"
-                               onChange={onChangeHandler}
-                               checked={t.isDone}/>
-                        <EditableSpan
-                            updateTitle={changeTaskTitle}
-                            title={t.title}/>
-                        <button onClick={onRemoveHandler}>❌</button>
-                    </li>
-                })
-            }
-        </ul>
+                            return <li key={t.id} className={t.isDone ? classes.isDone : ""}>
+                                <input type="checkbox"
+                                       onChange={onChangeHandler}
+                                       checked={t.isDone}/>
+                                <EditableSpan
+                                    updateTitle={changeTaskTitle}
+                                    title={t.title}/>
+                                <button onClick={onRemoveHandler}>❌</button>
+                            </li>
+                        })
+                    }
+                </ul>}
         <div>
             <button className={props.filter === 'all' ? classes.activeFilter : ""}
                     onClick={() => changeFilterHandler(props.todolistId, 'all')}>All
