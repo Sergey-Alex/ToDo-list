@@ -1,4 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {Button, IconButton, TextField} from "@mui/material";
+import classes from './TodoList.module.css'
+import {AddCircle} from "@mui/icons-material";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -31,13 +34,17 @@ const AddItemForm = (props: AddItemFormPropsType) => {
 
     return (
         <div>
-            <input value={itemTitle}
-                   onChange={onChangeHandler}
-                   onKeyDown={onKeyPressHandler}
-                   className={error ? "error" : ""}
+            <TextField value={itemTitle}
+                       label = {'Enter value'}
+                       variant={"outlined"}
+                       onChange={onChangeHandler}
+                       onKeyDown={onKeyPressHandler}
+                       className={error ? "error" : ""}
+                       error={!!error}
+                       helperText={error}
             />
-            <button onClick={addItem}>✅</button>
-            {error && <div className="error-message">{error}</div>}
+            <IconButton onClick={addItem}  color={"primary"}><AddCircle/></IconButton>
+            {/*{error && <div className={classes.errorMessage}>{error}</div>}*/}
         </div>
     );
 };
