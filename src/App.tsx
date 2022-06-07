@@ -94,11 +94,11 @@ function App() {
         }
 
         return (
-            <Grid item>
+            <Grid  key={t.id} item>
                 <Paper style ={{padding:'10px'}}>
                     <Todolist
                         todolistId={t.id}
-                        key={t.id}
+
                         title={t.title}
                         tasks={tasksForTodolist}
                         removeTask={removeTask}
@@ -120,14 +120,14 @@ function App() {
     return (
         <div className="App">
             <AppBar position="static">
-                <Toolbar variant="dense">
-                    <IconButton edge="start" color="inherit" aria-label="menu" sx={{mr: 2}}>
+                <Toolbar style={{justifyContent: "space-between"}}>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu/>
                     </IconButton>
-                    <Typography variant="h6" color="inherit" component="div">
-                        Photos
+                    <Typography variant="h6">
+                        Todolists
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" variant={"outlined"}>Login</Button>
                 </Toolbar>
             </AppBar>
             <Container fixed>
