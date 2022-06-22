@@ -1,16 +1,12 @@
 import React, {ChangeEvent} from 'react';
-import {FilterValuesType} from './App';
+import {FilterValuesType, TaskType} from './App';
 import classes from './TodoList.module.css'
 import AddItemForm from "./AddItemForm";
 import EditableSpan from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
-type TaskType = {
-    id: string
-    title: string
-    isDone: boolean
-}
+
 
 type PropsType = {
     todolistId: string

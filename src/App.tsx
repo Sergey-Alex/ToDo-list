@@ -8,11 +8,22 @@ import {Menu} from "@mui/icons-material";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-export type todoListsType = {
+export type TodoListsType = {
     id: string
     title: string
     filter: FilterValuesType
 }
+export type TaskType = {
+    id: string
+    title: string
+    isDone: boolean
+}
+
+export type TasksStateType = {
+    [key: string]: Array<TaskType>
+}
+
+
 
 function App() {
 
@@ -20,12 +31,12 @@ function App() {
     let todolistID2 = v1();
 
 
-    let [todolists, setTodolists] = useState<Array<todoListsType>>([
+    let [todolists, setTodolists] = useState<Array<TodoListsType>>([
         {id: todolistID1, title: 'What to learn', filter: 'all'},
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
 
-    let [tasks, setTasks] = useState({
+    let [tasks, setTasks] = useState<TasksStateType>({
         [todolistID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
@@ -74,7 +85,7 @@ function App() {
 
     const addTodoList = (title: string) => {
         const newTodoListId = v1()
-        const newTodoList: todoListsType = {
+        const newTodoList: TodoListsType = {
             id: newTodoListId,
             title: title,
             filter: 'all',
