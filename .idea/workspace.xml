@@ -4,13 +4,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add task reducer and test task-reducer">
-      <change afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
+    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add all in reducer">
+      <change afterPath="$PROJECT_DIR$/src/reducers/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,32 +72,6 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration name="ids should be equals" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/reducers/todolists-tasks-reducer.test.ts" />
-      <test-names>
-        <test-name value="ids should be equals" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="new property array should be added when new todolist is added" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" />
-      <test-names>
-        <test-name value="new property array should be added when new todolist is added" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration name="property with todolistId should be deleted" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -109,6 +83,26 @@
       <test-names>
         <test-name value="property with todolistId should be deleted" />
       </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="predeploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="predeploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -133,11 +127,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.predeploy" />
+        <item itemvalue="npm.test" />
         <item itemvalue="Jest.property with todolistId should be deleted" />
-        <item itemvalue="Jest.ids should be equals" />
-        <item itemvalue="Jest.new property array should be added when new todolist is added" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +157,8 @@
       <workItem from="1655219247459" duration="8871000" />
       <workItem from="1655910181425" duration="18731000" />
       <workItem from="1656431604371" duration="3684000" />
-      <workItem from="1656437142085" duration="3620000" />
+      <workItem from="1656437142085" duration="9112000" />
+      <workItem from="1656472588849" duration="609000" />
     </task>
     <task id="LOCAL-00001" summary="add new todolist, functional expanded">
       <created>1653465053804</created>
@@ -200,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655931060297</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add all in reducer">
+      <created>1656441232798</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656441232799</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +225,8 @@
     <MESSAGE value="add condition for list display" />
     <MESSAGE value="add todolist reducer and test" />
     <MESSAGE value="add task reducer and test task-reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add task reducer and test task-reducer" />
+    <MESSAGE value="add all in reducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add all in reducer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
