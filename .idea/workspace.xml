@@ -4,13 +4,31 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add all in reducer">
-      <change afterPath="$PROJECT_DIR$/src/reducers/store.ts" afterDir="false" />
+    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add refactoring code global">
+      <change afterPath="$PROJECT_DIR$/integration/app.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/​jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AddItemForm.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppWithRedux.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EditableSpan.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Task.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tasks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/todolist-reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolist-reducers.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolists-tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +63,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ToolWindowRNLogcat.ShowToolbar&quot;: &quot;false&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/IT-INCUBATOR/TODO_GIT/ToDo-list/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/IT-INCUBATOR/TODO_GIT/ToDo-list&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -70,9 +88,12 @@
       <recent name="F:\IT-INCUBATOR\TODO_GIT\ToDo-list\src" />
       <recent name="F:\IT-INCUBATOR\TODO_GIT\ToDo-list\src\reducers" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="F:\IT-INCUBATOR\TODO_GIT\ToDo-list\src\Tasks.tsx" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration name="property with todolistId should be deleted" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="correct task should be deleted from correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -81,25 +102,15 @@
       <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" />
       <test-names>
-        <test-name value="property with todolistId should be deleted" />
+        <test-name value="correct task should be deleted from correct array" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="jest:integration" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="deploy" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="predeploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="predeploy" />
+        <script value="jest:integration" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -115,11 +126,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="test" />
+        <script value="storybook" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test:integration" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test:integration" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -128,10 +149,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.predeploy" />
-        <item itemvalue="npm.test" />
-        <item itemvalue="Jest.property with todolistId should be deleted" />
+        <item itemvalue="npm.storybook" />
+        <item itemvalue="npm.test:integration" />
+        <item itemvalue="npm.jest:integration" />
+        <item itemvalue="Jest.correct task should be deleted from correct array" />
       </list>
     </recent_temporary>
   </component>
@@ -158,7 +179,41 @@
       <workItem from="1655910181425" duration="18731000" />
       <workItem from="1656431604371" duration="3684000" />
       <workItem from="1656437142085" duration="9112000" />
-      <workItem from="1656472588849" duration="609000" />
+      <workItem from="1656472588849" duration="3289000" />
+      <workItem from="1656516120960" duration="12513000" />
+      <workItem from="1657038230109" duration="22000" />
+      <workItem from="1657038257254" duration="670000" />
+      <workItem from="1657040973798" duration="1862000" />
+      <workItem from="1657132041699" duration="443000" />
+      <workItem from="1657133204993" duration="8070000" />
+      <workItem from="1657188920137" duration="56000" />
+      <workItem from="1657190554851" duration="1482000" />
+      <workItem from="1657267008647" duration="1026000" />
+      <workItem from="1657312189862" duration="657000" />
+      <workItem from="1657696267458" duration="1227000" />
+      <workItem from="1657817954478" duration="6190000" />
+      <workItem from="1657857102442" duration="2707000" />
+      <workItem from="1657859986530" duration="10667000" />
+      <workItem from="1658066189428" duration="11290000" />
+      <workItem from="1658081000978" duration="342000" />
+      <workItem from="1658083947027" duration="4673000" />
+      <workItem from="1658128706703" duration="5607000" />
+      <workItem from="1659003826485" duration="2696000" />
+      <workItem from="1659044713035" duration="1355000" />
+      <workItem from="1659082079990" duration="8809000" />
+      <workItem from="1659122278339" duration="25113000" />
+      <workItem from="1659265466531" duration="22000" />
+      <workItem from="1659466838940" duration="5000" />
+      <workItem from="1659467684331" duration="328000" />
+      <workItem from="1659548174457" duration="1562000" />
+      <workItem from="1660065167653" duration="6962000" />
+      <workItem from="1660144195190" duration="368000" />
+      <workItem from="1660158979791" duration="97000" />
+      <workItem from="1660459876690" duration="649000" />
+      <workItem from="1660460717103" duration="16959000" />
+      <workItem from="1662276215604" duration="20450000" />
+      <workItem from="1662399225910" duration="8500000" />
+      <workItem from="1662484419979" duration="3688000" />
     </task>
     <task id="LOCAL-00001" summary="add new todolist, functional expanded">
       <created>1653465053804</created>
@@ -202,7 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656441232799</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add redux">
+      <created>1656474102449</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656474102449</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add refactoring code global">
+      <created>1656536895010</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656536895010</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +295,20 @@
     <MESSAGE value="add todolist reducer and test" />
     <MESSAGE value="add task reducer and test task-reducer" />
     <MESSAGE value="add all in reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add all in reducer" />
+    <MESSAGE value="add redux" />
+    <MESSAGE value="add refactoring code global" />
+    <option name="LAST_COMMIT_MESSAGE" value="add refactoring code global" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/integration/​jest.config.js</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

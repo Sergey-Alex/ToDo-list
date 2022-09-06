@@ -7,7 +7,7 @@ type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
-const AddItemForm = (props: AddItemFormPropsType) => {
+export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
     const [itemTitle, setTitle] = useState<string>('')
     const [error, setError] = useState<string | null>(null)
@@ -47,6 +47,6 @@ const AddItemForm = (props: AddItemFormPropsType) => {
             {/*{error && <div className={classes.errorMessage}>{error}</div>}*/}
         </div>
     );
-};
+});
 
 export default AddItemForm;

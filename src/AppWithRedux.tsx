@@ -1,6 +1,6 @@
-import React, {useReducer, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './App.css';
-import {v1} from 'uuid';
+
 import {Todolist} from "./TodoList";
 import AddItemForm from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
@@ -8,26 +8,27 @@ import {Menu} from "@mui/icons-material";
 import {
     AddTodoListAC,
     ChangeTodolistFilterAC,
-    ChangeTodolistTitleAC,
-    RemoveTodolistAC,
-    todolistsReducers
+    ChangeTodolistTitleAC, fetchTodolistTC, FilterValuesType,
+    RemoveTodolistAC, TodoListDomainType,
+
 } from "./reducers/todolist-reducers";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducers} from "./reducers/tasks-reducers";
+
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootState} from "./reducers/store";
+import {AppRootState, useTypedDispatch} from "./reducers/store";
+import {TaskType} from "./api/todolists-api";
 
-export type FilterValuesType = "all" | "active" | "completed";
 
-export type TodoListsType = {
-    id: string
-    title: string
-    filter: FilterValuesType
-}
-export type TaskType = {
-    id: string
-    title: string
-    isDone: boolean
-}
+
+// export type TodoListsType = {
+//     id: string
+//     title: string
+//    filter: FilterValuesType
+
+// export type TaskType = {
+//     id: string
+//     title: string
+//     isDone: boolean
+// }
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
@@ -36,24 +37,28 @@ export type TasksStateType = {
 
 function AppWithRedux() {
 
-    const dispatch = useDispatch()
-      const todolists = useSelector<AppRootState, Array<TodoListsType>>(state=> state.todolists)
+    const dispatch = useTypedDispatch()
+      const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state=> state.todolists)
 
-    const changeTodoListTitle = (title: string, todoListId: string) => {
+    const changeTodoListTitle = useCallback((title: string, todoListId: string) => {
         dispatch(ChangeTodolistTitleAC(todoListId, title))
-    }
+    },[dispatch])
 
-    function changeFilter(todoListId: string, value: FilterValuesType) {
+    const changeFilter = useCallback((todoListId: string, value: FilterValuesType) => {
         dispatch(ChangeTodolistFilterAC(todoListId, value))
-    }
+    },[dispatch])
 
-    const removeTodoList = (todolistsId: string) => {
+    const removeTodoList = useCallback((todolistsId: string) => {
         dispatch(RemoveTodolistAC(todolistsId))
-    }
+    },[dispatch])
 
-    const addTodoList = (title: string) => {
+    const addTodoList =  useCallback( (title: string) => {
         dispatch(AddTodoListAC(title))
-    }
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(fetchTodolistTC())
+    },[])
 
     const todoListImage = todolists.map(t => {
 

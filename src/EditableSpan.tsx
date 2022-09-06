@@ -8,7 +8,8 @@ type EditableSpanPropsType = {
 
 }
 
-const EditableSpan = (props: EditableSpanPropsType) => {
+ const EditableSpan = React.memo((props: EditableSpanPropsType) => {
+    console.log('editable span')
     const [itemTitle, setTitle] = useState<string>(props.title)
     const [editMode, setEditMode] = useState<boolean>(false)
     const onEditMode = () => {
@@ -19,9 +20,9 @@ const EditableSpan = (props: EditableSpanPropsType) => {
         setEditMode(false)
         props.updateTitle(itemTitle)
     }
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler = ((e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
-    }
+    })
 
     return (
         editMode ? <TextField value={itemTitle}
@@ -30,6 +31,6 @@ const EditableSpan = (props: EditableSpanPropsType) => {
                           onChange={onChangeHandler}/>
             : <span onDoubleClick={onEditMode}>{props.title}</span>
     );
-};
+});
 
 export default EditableSpan;
