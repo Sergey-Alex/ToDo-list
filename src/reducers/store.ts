@@ -3,6 +3,7 @@ import {ActionTaskType, tasksReducers} from "./tasks-reducers";
 import {ActionTodolistType, todolistsReducers} from "./todolist-reducers";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {useDispatch} from "react-redux";
+import {ActionTypeApp, appReducer} from "./app-reducer";
 
 
 declare global {
@@ -14,7 +15,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     todolists: todolistsReducers,
-    task: tasksReducers
+    task: tasksReducers,
+    app: appReducer
 })
 
 
@@ -22,8 +24,8 @@ export type AppRootState = ReturnType<typeof rootReducer>
 export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 //все типы экшенов всего App
-export type AppActionsType = ActionTaskType | ActionTodolistType
-type TypedDispatch = ThunkDispatch<AppRootState, any, AppActionsType>
+export type AppActionsType = ActionTaskType | ActionTodolistType | ActionTypeApp
+export type TypedDispatch = ThunkDispatch<AppRootState, any, AppActionsType>
 export const useTypedDispatch = () => useDispatch<TypedDispatch>()
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootState, unknown, AppActionsType>
 

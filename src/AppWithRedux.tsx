@@ -3,13 +3,12 @@ import './App.css';
 
 import {Todolist} from "./TodoList";
 import AddItemForm from "./AddItemForm";
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
+import {AppBar, Button, Container, Grid, IconButton, LinearProgress, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 import {
     ChangeTodolistFilterAC,
     changeTodoListTitleTC,
     createTodolistTC,
-    fetchTodolistTC,
     FilterValuesType,
     removeTodolistTC,
     TodoListDomainType,
@@ -18,6 +17,7 @@ import {
 import {useSelector} from "react-redux";
 import {AppRootState, useTypedDispatch} from "./reducers/store";
 import {TaskType} from "./api/todolists-api";
+import {fetchTodoListTC, RequestStatusType} from "./reducers/app-reducer";
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
@@ -27,27 +27,29 @@ export type TasksStateType = {
 function AppWithRedux() {
 
     const dispatch = useTypedDispatch()
-      const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state=> state.todolists)
+    const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists)
+    const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
+    console.log(status)
 
     const changeTodoListTitle = useCallback((title: string, todoListId: string) => {
         dispatch(changeTodoListTitleTC({id: todoListId, title: title}))
-    },[dispatch])
+    }, [dispatch])
 
     const changeFilter = useCallback((todoListId: string, value: FilterValuesType) => {
         dispatch(ChangeTodolistFilterAC(todoListId, value))
-    },[dispatch])
+    }, [dispatch])
 
     const removeTodoList = useCallback((todolistsId: string) => {
         dispatch(removeTodolistTC(todolistsId))
-    },[dispatch])
+    }, [dispatch])
 
-    const addTodoList =  useCallback( (title: string) => {
+    const addTodoList = useCallback((title: string) => {
         dispatch(createTodolistTC(title))
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(fetchTodolistTC())
-    },[])
+        dispatch(fetchTodoListTC())
+    }, [])
 
     const todoListImage = todolists.map(t => {
 
@@ -81,6 +83,7 @@ function AppWithRedux() {
                     </Typography>
                     <Button color="inherit" variant={"outlined"}>Login</Button>
                 </Toolbar>
+                {status === 'loading' && <LinearProgress color={'secondary'}/>}
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: '20px'}}>
