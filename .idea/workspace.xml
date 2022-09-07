@@ -4,31 +4,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add refactoring code global">
-      <change afterPath="$PROJECT_DIR$/integration/app.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/setupTests.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/​jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AddItemForm.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppWithRedux.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditableSpan.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Task.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tasks.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/ReduxStoreProviderDecorator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" afterDir="false" />
+    <list default="true" id="b2aa605a-16e2-4d2d-9be8-5f5fcf7d76a2" name="Changes" comment="add: thunk create (UpdateTask, deleteTask, createTask) for component Tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasks-reducers.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasks-reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/todolist-reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolist-reducers.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolist-reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolists-tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +193,8 @@
       <workItem from="1660460717103" duration="16959000" />
       <workItem from="1662276215604" duration="20450000" />
       <workItem from="1662399225910" duration="8500000" />
-      <workItem from="1662484419979" duration="3688000" />
+      <workItem from="1662484419979" duration="4491000" />
+      <workItem from="1662574870876" duration="3234000" />
     </task>
     <task id="LOCAL-00001" summary="add new todolist, functional expanded">
       <created>1653465053804</created>
@@ -271,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656536895010</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add: thunk create (UpdateTask, deleteTask, createTask) for component Tasks">
+      <created>1662491388495</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662491388495</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +285,8 @@
     <MESSAGE value="add all in reducer" />
     <MESSAGE value="add redux" />
     <MESSAGE value="add refactoring code global" />
-    <option name="LAST_COMMIT_MESSAGE" value="add refactoring code global" />
+    <MESSAGE value="add: thunk create (UpdateTask, deleteTask, createTask) for component Tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: thunk create (UpdateTask, deleteTask, createTask) for component Tasks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
