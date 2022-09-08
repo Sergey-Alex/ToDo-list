@@ -8,6 +8,7 @@ import {
     UpdateTaskType
 } from "../api/todolists-api";
 import {AppActionsType, AppRootState, AppThunk} from "./store";
+import {setAppErrorStatusAC} from "./app-reducer";
 export type RemoveTaskAT = ReturnType<typeof removeTaskAC>
 export type AddTaskAT = ReturnType<typeof addTaskAC>
 
@@ -76,8 +77,15 @@ export const fetchTaskTC = (todolistId: string): AppThunk => (dispatch) => {
 type CreateTaskTCArgs = { todolistId: string, title: string }
 export const createTaskTC = ({todolistId, title}: CreateTaskTCArgs): AppThunk => (dispatch) => {
     todolistsApi.createTasks(todolistId, title).then(res => {
-        const task = res.data.data.item
-        dispatch(addTaskAC(task))
+        if (res.data.resultCode === 0){
+            const task = res.data.data.item
+            dispatch(addTaskAC(task))
+        } else {
+            if (res.data.messages){
+                dispatch(setAppErrorStatusAC(res.data.messages[0]))
+            }
+        }
+
     })
 }
 export type DeleteTaskTCArgs = { todolistId: string, taskId: string }

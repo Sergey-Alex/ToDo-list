@@ -18,6 +18,7 @@ import {useSelector} from "react-redux";
 import {AppRootState, useTypedDispatch} from "./reducers/store";
 import {TaskType} from "./api/todolists-api";
 import {fetchTodoListTC, RequestStatusType} from "./reducers/app-reducer";
+import ErrorSnackBar from "./componentx/ErrorSnackBar/ErrorSnackBar";
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
@@ -93,6 +94,7 @@ function AppWithRedux() {
                     {todolists.length ? todoListImage : <span> Create first note </span>}
                 </Grid>
             </Container>
+            <ErrorSnackBar/>
 
         </div>
     );
