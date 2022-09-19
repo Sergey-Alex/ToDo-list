@@ -9,7 +9,14 @@ import {AppRootState, useTypedDispatch} from "./reducers/store";
 import {addTaskAC, createTaskTC, fetchTaskTC} from "./reducers/tasks-reducers";
 import {Tasks} from "./Tasks";
 import {TaskStatuses, TaskType, todolistsApi} from './api/todolists-api';
-import {AddTodoListAC, fetchTodolistTC, FilterValuesType, SetTodoListAC} from "./reducers/todolist-reducers";
+import {
+    AddTodoListAC,
+    fetchTodolistTC,
+    FilterValuesType,
+    SetTodoListAC,
+    TodoListDomainType
+} from "./reducers/todolist-reducers";
+import {RequestStatusType} from "./reducers/app-reducer";
 
 
 type PropsType = {
@@ -19,6 +26,7 @@ type PropsType = {
     filter: FilterValuesType
     removeTodoList: (todolistId: string) => void
     changeTodoListTitle: (title: string, todoListId: string) => void
+    entityStatus?: RequestStatusType
 
 }
 
@@ -26,7 +34,8 @@ export const Todolist = React.memo((props: PropsType) => {
 
     const dispatch = useTypedDispatch()
     const tasks = useSelector<AppRootState, Array<TaskType>>(state => state.task[props.todolistId])
-
+    // const todolist = useSelector<AppRootState, TodoListDomainType[]>(state => state.todolists.filter(todolist => todolist.id === props.todolistId))
+    // console.log(todolist)
 
     let allTodoListTasks = tasks
     let tasksForTodolist = allTodoListTasks
@@ -53,10 +62,13 @@ export const Todolist = React.memo((props: PropsType) => {
     return <div>
         <h3>
             <EditableSpan title={props.title} updateTitle={changeTodoListTitle}/>
-            <IconButton onClick={() => props.removeTodoList(props.todolistId)}><Delete/></IconButton>
+            <IconButton onClick={() => props.removeTodoList(props.todolistId)} disabled={props.entityStatus === 'loading'}><Delete/></IconButton>
         </h3>
         <AddItemForm
-            addItem={useCallback((title: string) => dispatch(createTaskTC({title: title,todolistId:  props.todolistId})), [props.todolistId])}/>
+            entityStatus = {props.entityStatus}
+            addItem={useCallback((title: string) => dispatch(createTaskTC({title: title,todolistId:  props.todolistId})),
+                [props.todolistId])}
+                />
         {
             tasks.length === 0 ? <><span>please enter data</span></> : <div>
                 {

@@ -18,10 +18,10 @@ export default function ErrorSnackBar() {
 
     const error = useSelector<AppRootState, string | null>(state => state.app.error)
     const isOpen = error !== null
+
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
             return
-
         }
         dispatch(setAppErrorStatusAC(null))
         //  setOpen(false);

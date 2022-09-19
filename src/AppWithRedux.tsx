@@ -8,7 +8,7 @@ import {Menu} from "@mui/icons-material";
 import {
     ChangeTodolistFilterAC,
     changeTodoListTitleTC,
-    createTodolistTC,
+    createTodolistTC, fetchTodolistTC,
     FilterValuesType,
     removeTodolistTC,
     TodoListDomainType,
@@ -17,7 +17,7 @@ import {
 import {useSelector} from "react-redux";
 import {AppRootState, useTypedDispatch} from "./reducers/store";
 import {TaskType} from "./api/todolists-api";
-import {fetchTodoListTC, RequestStatusType} from "./reducers/app-reducer";
+import {RequestStatusType} from "./reducers/app-reducer";
 import ErrorSnackBar from "./componentx/ErrorSnackBar/ErrorSnackBar";
 
 export type TasksStateType = {
@@ -30,8 +30,6 @@ function AppWithRedux() {
     const dispatch = useTypedDispatch()
     const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists)
     const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
-    console.log(status)
-
     const changeTodoListTitle = useCallback((title: string, todoListId: string) => {
         dispatch(changeTodoListTitleTC({id: todoListId, title: title}))
     }, [dispatch])
@@ -49,7 +47,7 @@ function AppWithRedux() {
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(fetchTodoListTC())
+        dispatch(fetchTodolistTC())
     }, [])
 
     const todoListImage = todolists.map(t => {
@@ -58,6 +56,7 @@ function AppWithRedux() {
             <Grid key={t.id} item>
                 <Paper style={{padding: '10px'}}>
                     <Todolist
+                        entityStatus = {t.entityStatus}
                         todolistId={t.id}
                         title={t.title}
                         changeFilter={changeFilter}
@@ -88,7 +87,7 @@ function AppWithRedux() {
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: '20px'}}>
-                    <AddItemForm addItem={addTodoList}/>
+                    <AddItemForm entityStatus={status}  addItem={addTodoList}/>
                 </Grid>
                 <Grid container spacing={3}>
                     {todolists.length ? todoListImage : <span> Create first note </span>}

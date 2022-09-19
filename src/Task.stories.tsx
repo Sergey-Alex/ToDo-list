@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import {store} from "./reducers/store";
 import {v1} from "uuid";
 import {TaskPriorities, TaskStatuses} from "./api/todolists-api";
-import {todolistID1} from "./reducers/todolist-reducers";
+
 
 
 export default {
@@ -25,7 +25,7 @@ export const TaskBaseExample = () => {
             addedDate: '',
             deadline: '',
             order: 0,
-            todoListId: todolistID1,
+            todoListId: 'todolistID1',
             description: 'xcvcxzx',
             priority: TaskPriorities.Low
         } } todolistId={'222'}/>

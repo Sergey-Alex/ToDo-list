@@ -1,6 +1,4 @@
 import axios from "axios";
-import {TodoListDomainType} from "../reducers/todolist-reducers";
-import  { AxiosResponse } from 'axios'
 
 
 const settings = {

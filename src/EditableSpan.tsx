@@ -9,7 +9,6 @@ type EditableSpanPropsType = {
 }
 
  const EditableSpan = React.memo((props: EditableSpanPropsType) => {
-    console.log('editable span')
     const [itemTitle, setTitle] = useState<string>(props.title)
     const [editMode, setEditMode] = useState<boolean>(false)
     const onEditMode = () => {
