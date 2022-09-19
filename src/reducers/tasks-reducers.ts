@@ -1,14 +1,9 @@
 import {TasksStateType} from "../AppWithRedux";
 
 import {AddTodoListAT, RemoveTodoListAT, SetTodoListAC} from "./todolist-reducers";
-import {
-    TaskType,
-    todolistsApi,
-    UpdateModelTaskType,
-    UpdateTaskType
-} from "../api/todolists-api";
+import {TaskType, todolistsApi, UpdateModelTaskType, UpdateTaskType} from "../api/todolists-api";
 import {AppActionsType, AppRootState, AppThunk} from "./store";
-import {setAppErrorStatusAC, setAppStatusAC} from "./app-reducer";
+import {setAppStatusAC} from "./app-reducer";
 import {handleServerAppError, handleServerNetworkError} from "../utils/error-utils";
 
 export type RemoveTaskAT = ReturnType<typeof removeTaskAC>
@@ -107,6 +102,8 @@ export type DeleteTaskTCArgs = { todolistId: string, taskId: string }
 export const deleteTaskTC = ({todolistId, taskId}: DeleteTaskTCArgs): AppThunk => (dispatch) => {
     todolistsApi.deleteTask(todolistId, taskId).then(res => {
         dispatch(removeTaskAC(taskId, todolistId))
+    }).catch(error => {
+        handleServerNetworkError(error, dispatch)
     })
 }
 
