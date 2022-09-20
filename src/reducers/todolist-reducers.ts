@@ -122,12 +122,14 @@ export const removeTodolistTC = (todolistId: string): AppThunk => (dispatch) => 
 export type changeTodolistTypeArg = { id: string, title: string }
 
 export const changeTodoListTitleTC = ({id, title}: changeTodolistTypeArg): AppThunk => (dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     todolistsApi.updateTodolist(id, title).then(res => {
         if (res.data.resultCode === 0){
             dispatch(ChangeTodolistTitleAC(id, title))
         } else {
             handleServerAppError(res.data, dispatch)
         }
+        dispatch(setAppStatusAC('succeeded'))
     }).catch(error => {
         handleServerNetworkError(error, dispatch)
     })
