@@ -1,8 +1,8 @@
-
 import {TodoListGetType, todolistsApi} from "../api/todolists-api";
 import {Dispatch} from "redux";
 import {AppActionsType, AppThunk} from "./store";
 import {RequestStatusType, setAppStatusAC} from "./app-reducer";
+import {handleServerAppError, handleServerNetworkError} from "../utils/error-utils";
 
 export type RemoveTodoListAT = {
     type: 'REMOVE-TODOLIST'
@@ -63,7 +63,7 @@ export const todolistsReducers = (todolists: Array<TodoListDomainType> = initial
         case 'SET-TODOLIST':
             return action.todolist.map(t => ({...t, filter: 'all', entityStatus: 'idle'}))
         case 'CHANGE-TODOLIST-ENTITY-STATUS':
-            return  todolists.map(tl => tl.id === action.id ? {...tl, entityStatus: action.entityStatus} : tl)
+            return todolists.map(tl => tl.id === action.id ? {...tl, entityStatus: action.entityStatus} : tl)
         default:
             return todolists
 
@@ -72,11 +72,17 @@ export const todolistsReducers = (todolists: Array<TodoListDomainType> = initial
 export const AddTodoListAC = (todolist: TodolistType) => ({type: "ADD-TODOLIST", todolist}) as const
 export const RemoveTodolistAC = (id: string): RemoveTodoListAT => ({type: 'REMOVE-TODOLIST', id}) as const
 export const ChangeTodolistFilterAC = (id: string, newValueFilter: FilterValuesType): ChangeTodoListFilterAT => ({
-    type: "CHANGE-TODOLIST-FILTER", id, newValueFilter}) as const
+    type: "CHANGE-TODOLIST-FILTER", id, newValueFilter
+}) as const
 export const ChangeTodolistTitleAC = (id: string, title: string): ChangeTodoListTitleAT => ({
-    type: "CHANGE-TODOLIST-TITLE", id, title}) as const
+    type: "CHANGE-TODOLIST-TITLE", id, title
+}) as const
 export const SetTodoListAC = (todolist: Array<TodoListGetType>) => ({type: 'SET-TODOLIST', todolist} as const)
-export const ChangeTodoListEntityStatus = (id :string, entityStatus: RequestStatusType) => ({type: 'CHANGE-TODOLIST-ENTITY-STATUS', id, entityStatus} as const)
+export const ChangeTodoListEntityStatus = (id: string, entityStatus: RequestStatusType) => ({
+    type: 'CHANGE-TODOLIST-ENTITY-STATUS',
+    id,
+    entityStatus
+} as const)
 
 export const fetchTodolistTC = () => {
     return (dispatch: Dispatch<AppActionsType>) => {
@@ -89,24 +95,40 @@ export const fetchTodolistTC = () => {
 }
 export const createTodolistTC = (title: string): AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
-    todolistsApi.createTodolist(title).then(res => {
-        dispatch(AddTodoListAC(res.data.data.item))
-        dispatch(setAppStatusAC('succeeded'))
-    })
+    todolistsApi.createTodolist(title)
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(AddTodoListAC(res.data.data.item))
+                dispatch(setAppStatusAC('succeeded'))
+            } else {
+                handleServerAppError(res.data, dispatch)
+            }
+        })
+        .catch(error => {
+            handleServerNetworkError(error, dispatch)
+        })
 }
 
-export const removeTodolistTC = (todolistId:string): AppThunk => (dispatch)=>{
+export const removeTodolistTC = (todolistId: string): AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     dispatch(ChangeTodoListEntityStatus(todolistId, 'loading'))
-    todolistsApi.deleteTodolist(todolistId).then(res =>{
+    todolistsApi.deleteTodolist(todolistId).then(res => {
         dispatch(RemoveTodolistAC(todolistId))
         dispatch(setAppStatusAC('succeeded'))
+    }).catch(error => {
+        handleServerNetworkError(error, dispatch)
     })
 }
-export type changeTodolistTypeArg = {id: string, title: string}
+export type changeTodolistTypeArg = { id: string, title: string }
 
-export const changeTodoListTitleTC = ({id, title}: changeTodolistTypeArg): AppThunk => (dispatch)=>{
+export const changeTodoListTitleTC = ({id, title}: changeTodolistTypeArg): AppThunk => (dispatch) => {
     todolistsApi.updateTodolist(id, title).then(res => {
-        dispatch(ChangeTodolistTitleAC(id, title))
+        if (res.data.resultCode === 0){
+            dispatch(ChangeTodolistTitleAC(id, title))
+        } else {
+            handleServerAppError(res.data, dispatch)
+        }
+    }).catch(error => {
+        handleServerNetworkError(error, dispatch)
     })
 }
